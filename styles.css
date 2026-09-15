@@ -13,3 +13,109 @@ img[src*="ljfh-logo-header"] {
     max-height: 140px !important;
   }
 }
+
+
+/* ===== LJFH V4 launch refinements ===== */
+
+/* Testimonials are retained in source but not shown until genuine reviews are supplied. */
+#testimonials,
+.testimonials {
+  display: none !important;
+}
+
+/* Seven industries: balanced grid rather than an apparent missing eighth tile. */
+.industries-grid,
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.industries-grid > *:nth-child(n+5),
+.industry-grid > *:nth-child(n+5) {
+  grid-column: span 1;
+}
+
+/* Contact area: compact, aligned and with safe top spacing. */
+#contact,
+.contact-section,
+.contact {
+  overflow: visible;
+}
+#contact .container,
+.contact-section .container,
+.contact .container {
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+#contact h2,
+.contact-section h2,
+.contact h2 {
+  margin-top: 0;
+  line-height: 1.08;
+}
+
+/* Avoid oversized empty areas in the enquiry section. */
+#contact form,
+.contact-section form,
+.contact form {
+  margin-bottom: 0;
+}
+
+/* Mobile/tablet refinements */
+@media (max-width: 900px) {
+  .industries-grid,
+  .industry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .industries-grid,
+  .industry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header img,
+  .site-logo,
+  .logo img {
+    max-width: min(88vw, 390px);
+    height: auto;
+  }
+
+  #contact .container,
+  .contact-section .container,
+  .contact .container {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* ===== V6 refinements ===== */
+/* Make the seventh service card span the full row on desktop. */
+.cards > article:nth-child(7) {
+  grid-column: 1 / -1;
+}
+
+/* Contact links remain visually consistent while being clickable. */
+.contact-details a,
+footer a {
+  color: inherit;
+  text-decoration: none;
+}
+.contact-details a:hover,
+.contact-details a:focus,
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .cards > article:nth-child(7) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .cards > article:nth-child(7) {
+    grid-column: auto;
+  }
+}
