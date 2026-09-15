@@ -12,7 +12,7 @@ Upload the contents of this folder to the `ljfh-eng` repository. Keep `index.htm
 The current form deliberately uses the visitor's email application (`mailto:`), so no server or third-party form service is required. It can later be replaced with a hosted form endpoint.
 
 ## Testimonials
-The testimonial cards are placeholders and are explicitly labelled as such. Replace them only with genuine client testimonials before relying on this section publicly.
+The Testimonials section is currently hidden from the public website. Enable it only after genuine client testimonials have been added.
 
 ## Logo
-The supplied logo image is stored at `assets/ljfh-logo.jpg`.
+The supplied logo image is stored at `ljfh-logo-header.png`.
