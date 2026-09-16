@@ -1,50 +1,42 @@
 const menu = document.querySelector('.menu');
 const nav = document.querySelector('.site-header nav');
 
-// Mobile menu
 if (menu && nav) {
-    menu.addEventListener('click', () => {
-        nav.classList.toggle('open');
-        menu.setAttribute(
-            'aria-expanded',
-            nav.classList.contains('open') ? 'true' : 'false'
-        );
-    });
+  menu.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    menu.setAttribute(
+      'aria-expanded',
+      nav.classList.contains('open') ? 'true' : 'false'
+    );
+  });
 }
 
-// Correct scrolling for fixed header navigation
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function (event) {
-        const targetId = this.getAttribute('href');
+  link.addEventListener('click', function (e) {
+    const id = this.getAttribute('href');
 
-        if (!targetId || targetId === '#') return;
+    if (!id || id === '#') return;
 
-        const target = document.querySelector(targetId);
-        if (!target) return;
+    const target = document.querySelector(id);
+    if (!target) return;
 
-        event.preventDefault();
+    e.preventDefault();
 
-        const header = document.querySelector('.site-header');
-        const headerHeight = header ? header.offsetHeight : 0;
+    const header = document.querySelector('.site-header');
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
 
-        const targetPosition =
-            target.getBoundingClientRect().top +
-            window.pageYOffset -
-            headerHeight -
-            30;
+    const targetPosition =
+      target.getBoundingClientRect().top +
+      window.pageYOffset -
+      headerHeight -
+      20;
 
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-
-        // Close mobile navigation after selecting a section
-        if (nav) {
-            nav.classList.remove('open');
-        }
-
-        if (menu) {
-            menu.setAttribute('aria-expanded', 'false');
-        }
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
     });
+
+    if (nav) nav.classList.remove('open');
+    if (menu) menu.setAttribute('aria-expanded', 'false');
+  });
 });
