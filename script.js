@@ -40,3 +40,38 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (menu) menu.setAttribute('aria-expanded', 'false');
   });
 });
+const contactForm = document.querySelector('#contactForm');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    const name = formData.get('name') || '';
+    const company = formData.get('company') || '';
+    const email = formData.get('email') || '';
+    const phone = formData.get('phone') || '';
+    const message = formData.get('message') || '';
+
+    const subject = `Website Enquiry - ${company || name}`;
+
+    const body =
+`New website enquiry
+
+Name: ${name}
+Company: ${company}
+Email: ${email}
+Phone: ${phone}
+
+Enquiry:
+${message}`;
+
+    const mailto =
+      'mailto:Liam@ljfh-engineering.co.uk' +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+  });
+}
