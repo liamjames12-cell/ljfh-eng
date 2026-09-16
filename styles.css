@@ -118,4 +118,11 @@ footer a:focus {
   .cards > article:nth-child(7) {
     grid-column: auto;
   }
+
+  /* Fix navigation anchor position below header */
+#about,
+#services,
+#industries,
+#contact {
+    scroll-margin-top: 210px;
 }
